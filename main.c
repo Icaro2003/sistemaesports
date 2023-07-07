@@ -109,7 +109,7 @@ void cadastrarTime()
 {
     system("cls");
     srand(time(NULL));
-    FILE *arquivo_time = fopen("./arquivos/arquivo_time.txt", "a");
+    FILE *arquivo_time = fopen("arquivo_time.txt", "a");
     Times time_esport;
 
     if (arquivo_time != NULL)
@@ -165,8 +165,8 @@ void cadastrarTime()
 void alterarTime()
 {
     system("cls");
-    FILE *arquivo_time = fopen("./arquivos/arquivo_time.txt", "r");
-    FILE *arquivo_time_temp = fopen("./arquivos/arquivo_time_temp.txt", "w");
+    FILE *arquivo_time = fopen("arquivo_time.txt", "r");
+    FILE *arquivo_time_temp = fopen("arquivo_time_temp.txt", "w");
     Times time_esport;
     int id_time;
 
@@ -234,12 +234,12 @@ void alterarTime()
 
         if (time_existente)
         {
-            remove("./arquivos/arquivo_time.txt");
-            rename("./arquivos/arquivo_time_temp.txt", "./arquivos/arquivo_time.txt");
+            remove("arquivo_time.txt");
+            rename("arquivo_time_temp.txt", "arquivo_time.txt");
         }
         else
         {
-            remove("./arquivos/arquivo_time_temp.txt");
+            remove("arquivo_time_temp.txt");
             printf("Time não encontrado!\n");
         }
     }
@@ -255,7 +255,7 @@ void cadastrarJogador()
 {
     system("cls");
     srand(time(NULL));
-    FILE *arquivo_jogador = fopen("./arquivos/arquivo_jogador.txt", "a");
+    FILE *arquivo_jogador = fopen("arquivo_jogador.txt", "a");
     Jogadores jogador;
 
     if (arquivo_jogador != NULL)
@@ -302,8 +302,8 @@ void cadastrarJogador()
 void alterarJogador()
 {
     system("cls");
-    FILE *arquivo_jogador = fopen("./arquivos/arquivo_jogador.txt", "r");
-    FILE *arquivo_jogador_temp = fopen("./arquivos/arquivo_jogador_temp.txt", "w");
+    FILE *arquivo_jogador = fopen("arquivo_jogador.txt", "r");
+    FILE *arquivo_jogador_temp = fopen("arquivo_jogador_temp.txt", "w");
     Jogadores jogador;
     int id_jogador;
 
@@ -367,12 +367,12 @@ void alterarJogador()
 
         if (jogador_existente)
         {
-            remove("./arquivos/arquivo_jogador.txt");
-            rename("./arquivos/arquivo_jogador_temp.txt", "./arquivos/arquivo_jogador.txt");
+            remove("arquivo_jogador.txt");
+            rename("arquivo_jogador_temp.txt", "arquivo_jogador.txt");
         }
         else
         {
-            remove("./arquivos/arquivo_jogador_temp.txt");
+            remove("arquivo_jogador_temp.txt");
             printf("Jogador não encontrado!\n");
         }
     }
