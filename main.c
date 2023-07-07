@@ -255,7 +255,7 @@ void cadastrarJogador()
 {
     system("cls");
     srand(time(NULL));
-    FILE *arquivo_jogador = fopen("./arquivos/arquivo_jogador.txt", "w");
+    FILE *arquivo_jogador = fopen("./arquivos/arquivo_jogador.txt", "a");
     Jogadores jogador;
 
     if (arquivo_jogador != NULL)
