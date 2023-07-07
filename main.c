@@ -3,7 +3,7 @@
 #include <locale.h>
 #include <time.h>
 
-#define MAX_SIZE 100
+#define TAMANHO_MAXIMO 100
 
 typedef struct
 {
@@ -17,8 +17,8 @@ typedef struct
 typedef struct
 {
     int id_time;
-    char nome_time[MAX_SIZE];
-    char pais_time[MAX_SIZE];
+    char nome_time[TAMANHO_MAXIMO];
+    char pais_time[TAMANHO_MAXIMO];
     Data data_criacao;
     int num_jogadores;
 } Times;
@@ -26,10 +26,10 @@ typedef struct
 typedef struct
 {
     int id_jogador;
-    char nome_jogador[MAX_SIZE];
+    char nome_jogador[TAMANHO_MAXIMO];
     char apelido;
     int idade;
-    char posicao[MAX_SIZE];
+    char posicao[TAMANHO_MAXIMO];
     float salario;
 } Jogadores;
 
@@ -42,7 +42,7 @@ typedef struct
     Horario hora;
     int placar_final_time_casa;
     int placar_final_time_visitante;
-    char destaque_individual_partida[MAX_SIZE];
+    char destaque_individual_partida[TAMANHO_MAXIMO];
 } Partidas;
 
 void cadastrarTime();
@@ -169,7 +169,7 @@ void alterarTime()
     if (arquivo_time != NULL && arquivo_time_temp != NULL)
     {
         int time_existente = 0;
-        char linha[MAX_SIZE];
+        char linha[TAMANHO_MAXIMO];
         int posicao_arquivo = 0;
 
         while (fgets(linha, sizeof(linha), arquivo_time) != NULL)
