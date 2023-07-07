@@ -60,20 +60,20 @@ int main()
     do
     {
         printf("1 - Cadastrar um time\n");
-        printf("2 - Alterar informações de um time\n");
-        printf("3 - Exibe informação da função\n");
+        printf("2 - Alterar informaÃ§Ãµes de um time\n");
+        printf("3 - Exibe informaÃ§Ã£o da funÃ§Ã£o\n");
         printf("3 - Cadastrar um jogador\n");
-        printf("4 - Alterar informações de um jogador\n");
+        printf("4 - Alterar informaÃ§Ãµes de um jogador\n");
         printf("5 - Registrar uma partida\n");
         printf("6 - Buscar partidas por time\n");
-        printf("7 - Buscar partidas por período\n");
+        printf("7 - Buscar partidas por perï¿½odo\n");
         printf("8 - Listar todos os times\n");
         printf("9 - Listar todos os jogadores\n");
-        printf("10 - Calcular média de idade dos jogadores\n");
-        printf("11 - Preço total do time\n");
+        printf("10 - Calcular mÃ©dia de idade dos jogadores\n");
+        printf("11 - PreÃ§o total do time\n");
         printf("12 - Sair do programa\n");
 
-        printf("\nEscolha uma opção: ");
+        printf("\nEscolha uma opÃ§Ã£o: ");
         scanf("%d", &opcao);
 
         getchar();
@@ -96,7 +96,7 @@ int main()
             printf("Saindo do sistema...\n");
             break;
         default:
-            printf("Opção inválida!\n");
+            printf("OpÃ§Ã£o invÃ¡lida!\n");
             break;
         }
     } while (opcao != 12);
@@ -109,7 +109,7 @@ void cadastrarTime()
 {
     system("cls");
     srand(time(NULL));
-    FILE *arquivo_time = fopen("arquivo_time.txt", "a");
+    FILE *arquivo_time = fopen("./arquivos/arquivo_time.txt", "a");
     Times time_esport;
 
     if (arquivo_time != NULL)
@@ -117,22 +117,22 @@ void cadastrarTime()
         time_esport.id_time = rand() % 10000000;
         fprintf(arquivo_time, "IP: %d\n", time_esport.id_time);
 
-        printf("Informe o nome do time: ");
+        printf("Nome do time: ");
         fgets(time_esport.nome_time, sizeof(time_esport.nome_time), stdin);
         fprintf(arquivo_time, "Nome: %s", time_esport.nome_time);
 
-        printf("País de origem do time: ");
+        printf("Paï¿½s de origem do time: ");
         fgets(time_esport.pais_time, sizeof(time_esport.pais_time), stdin);
-        fprintf(arquivo_time, "País de origem: %s", time_esport.pais_time);
+        fprintf(arquivo_time, "PaÃ­s de origem: %s", time_esport.pais_time);
 
-        printf("Data de criação do time\n");
+        printf("Data de criaÃ§Ã£o do time\n");
 
         printf("Dia: ");
         scanf("%d", &time_esport.data_criacao.dia);
 
         getchar();
 
-        printf("Mês: ");
+        printf("MÃªs: ");
         scanf("%d", &time_esport.data_criacao.mes);
 
         getchar();
@@ -140,13 +140,13 @@ void cadastrarTime()
         printf("Ano: ");
         scanf("%d", &time_esport.data_criacao.ano);
 
-        fprintf(arquivo_time, "Data de criação: %d / %d / %d\n", time_esport.data_criacao.dia, time_esport.data_criacao.mes, time_esport.data_criacao.ano);
+        fprintf(arquivo_time, "Data de criaÃ§Ã£o: %d / %d / %d\n", time_esport.data_criacao.dia, time_esport.data_criacao.mes, time_esport.data_criacao.ano);
 
         getchar();
 
-        printf("Número de jogadores: ");
+        printf("NÃºmero de jogadores: ");
         scanf("%d", &time_esport.num_jogadores);
-        fprintf(arquivo_time, "Número de jogadores: %d\n", time_esport.num_jogadores);
+        fprintf(arquivo_time, "NÃºmero de jogadores: %d\n", time_esport.num_jogadores);
     }
     else
     {
@@ -165,8 +165,8 @@ void cadastrarTime()
 void alterarTime()
 {
     system("cls");
-    FILE *arquivo_time = fopen("arquivo_time.txt", "r");
-    FILE *arquivo_time_temp = fopen("arquivo_time_temp.txt", "w");
+    FILE *arquivo_time = fopen("./arquivos/arquivo_time.txt", "r");
+    FILE *arquivo_time_temp = fopen("./arquivos/arquivo_time_temp.txt", "w");
     Times time_esport;
     int id_time;
 
@@ -186,34 +186,34 @@ void alterarTime()
             if (sscanf(linha, "IP: %d", &time_esport.id_time) == 1 && time_esport.id_time == id_time)
             {
                 time_existente = 1;
-                printf("\nInforme o novo nome do time: ");
+                printf("\nNovo nome do time: ");
                 fgets(time_esport.nome_time, sizeof(time_esport.nome_time), stdin);
 
-                printf("Informe o novo país de origem do time: ");
+                printf("Novo paÃ­s de origem do time: ");
                 fgets(time_esport.pais_time, sizeof(time_esport.pais_time), stdin);
 
-                printf("Informe a nova data de criação do time\n");
+                printf("Nova data de criaÃ§Ã£o do time\n");
                 printf("Dia: ");
                 scanf("%d", &time_esport.data_criacao.dia);
                 getchar();
 
-                printf("Mês: ");
+                printf("MÃªs: ");
                 scanf("%d", &time_esport.data_criacao.mes);
                 getchar();
 
                 printf("Ano: ");
                 scanf("%d", &time_esport.data_criacao.ano);
 
-                printf("Informe o novo número de jogadores: ");
+                printf("Novo nï¿½mero de jogadores: ");
                 scanf("%d", &time_esport.num_jogadores);
 
                 fseek(arquivo_time, posicao_arquivo, SEEK_SET);
 
                 fprintf(arquivo_time_temp, "ID: %d\n", time_esport.id_time);
                 fprintf(arquivo_time_temp, "Nome: %s", time_esport.nome_time);
-                fprintf(arquivo_time_temp, "País de origem: %s", time_esport.pais_time);
-                fprintf(arquivo_time_temp, "Data de criação: %d / %d / %d\n", time_esport.data_criacao.dia, time_esport.data_criacao.mes, time_esport.data_criacao.ano);
-                fprintf(arquivo_time_temp, "Número de jogadores: %d\n", time_esport.num_jogadores);
+                fprintf(arquivo_time_temp, "PaÃ­s de origem: %s", time_esport.pais_time);
+                fprintf(arquivo_time_temp, "Data de criaÃ§Ã£o: %d / %d / %d\n", time_esport.data_criacao.dia, time_esport.data_criacao.mes, time_esport.data_criacao.ano);
+                fprintf(arquivo_time_temp, "NÃºmero de jogadores: %d\n", time_esport.num_jogadores);
 
                 system("cls");
                 printf("TIME ALTERADO COM SUCESSO\n");
@@ -234,13 +234,13 @@ void alterarTime()
 
         if (time_existente)
         {
-            remove("arquivo_time.txt");
-            rename("arquivo_time_temp.txt", "arquivo_time.txt");
+            remove("./arquivos/arquivo_time.txt");
+            rename("./arquivos/arquivo_time_temp.txt", "./arquivos/arquivo_time.txt");
         }
         else
         {
-            remove("arquivo_time_temp.txt");
-            printf("Time não encontrado!\n");
+            remove("./arquivos/arquivo_time_temp.txt");
+            printf("Time nÃ£o encontrado!\n");
         }
     }
     else
@@ -255,7 +255,7 @@ void cadastrarJogador()
 {
     system("cls");
     srand(time(NULL));
-    FILE *arquivo_jogador = fopen("arquivo_jogador.txt", "a");
+    FILE *arquivo_jogador = fopen("./arquivos/arquivo_jogador.txt", "a");
     Jogadores jogador;
 
     if (arquivo_jogador != NULL)
@@ -271,9 +271,9 @@ void cadastrarJogador()
         fgets(jogador.apelido, sizeof(jogador.apelido), stdin);
         fprintf(arquivo_jogador, "Apelido: %s", jogador.apelido);
 
-        printf("País de origem do jogador: ");
+        printf("Paï¿½s de origem do jogador: ");
         fgets(jogador.pais_jogador, sizeof(jogador.pais_jogador), stdin);
-        fprintf(arquivo_jogador, "País de origem: %s", jogador.pais_jogador);
+        fprintf(arquivo_jogador, "Paï¿½s de origem: %s", jogador.pais_jogador);
 
         printf("Idade do jogador: ");
         scanf("%d", &jogador.idade);
@@ -281,9 +281,9 @@ void cadastrarJogador()
 
         getchar();
 
-        printf("Posição do jogador: ");
+        printf("PosiÃ§Ã£o do jogador: ");
         fgets(jogador.posicao, sizeof(jogador.posicao), stdin);
-        fprintf(arquivo_jogador, "Posição de jogo: %s", jogador.posicao);
+        fprintf(arquivo_jogador, "PosiÃ§Ã£o de jogo: %s", jogador.posicao);
     }
     else
     {
@@ -302,8 +302,8 @@ void cadastrarJogador()
 void alterarJogador()
 {
     system("cls");
-    FILE *arquivo_jogador = fopen("arquivo_jogador.txt", "r");
-    FILE *arquivo_jogador_temp = fopen("arquivo_jogador_temp.txt", "w");
+    FILE *arquivo_jogador = fopen("./arquivos/arquivo_jogador.txt", "r");
+    FILE *arquivo_jogador_temp = fopen("./arquivos/arquivo_jogador_temp.txt", "w");
     Jogadores jogador;
     int id_jogador;
 
@@ -323,13 +323,13 @@ void alterarJogador()
             if (sscanf(linha, "IP: %d", &jogador.id_jogador) == 1 && jogador.id_jogador == id_jogador)
             {
                 jogador_existente = 1;
-                printf("\nInforme o novo nome do jogador: ");
+                printf("\nNovo nome do jogador: ");
                 fgets(jogador.nome_jogador, sizeof(jogador.nome_jogador), stdin);
 
-                printf("Informe o novo apelido do jogador: ");
+                printf("Novo apelido do jogador: ");
                 fgets(jogador.apelido, sizeof(jogador.apelido), stdin);
 
-                printf("Informe o novo país de origem do time: ");
+                printf("Novo paï¿½s de origem do time: ");
                 fgets(jogador.pais_jogador, sizeof(jogador.pais_jogador), stdin);
 
                 printf("Nova idade do jogador: ");
@@ -337,7 +337,7 @@ void alterarJogador()
 
                 getchar();
 
-                printf("Nova posição do jogador: ");
+                printf("Nova posiÃ§Ã£o do jogador: ");
                 fgets(jogador.posicao, sizeof(jogador.posicao), stdin);
 
                 fseek(arquivo_jogador, posicao_arquivo, SEEK_SET);
@@ -345,8 +345,8 @@ void alterarJogador()
                 fprintf(arquivo_jogador_temp, "ID: %d\n", jogador.id_jogador);
                 fprintf(arquivo_jogador_temp, "Nome: %s", jogador.nome_jogador);
                 fprintf(arquivo_jogador_temp, "Apelido: \n", jogador.apelido);
-                fprintf(arquivo_jogador_temp, "País de origem: %s", jogador.pais_jogador);
-                fprintf(arquivo_jogador_temp, "Posição: %s", jogador.posicao);
+                fprintf(arquivo_jogador_temp, "Paï¿½s de origem: %s", jogador.pais_jogador);
+                fprintf(arquivo_jogador_temp, "Posiï¿½ï¿½o: %s", jogador.posicao);
 
                 system("cls");
                 printf("JOGADOR ALTERADO COM SUCESSO\n");
@@ -367,13 +367,13 @@ void alterarJogador()
 
         if (jogador_existente)
         {
-            remove("arquivo_jogador.txt");
-            rename("arquivo_jogador_temp.txt", "arquivo_jogador.txt");
+            remove("./arquivos/arquivo_jogador.txt");
+            rename("./arquivos/arquivo_jogador_temp.txt", "./arquivos/arquivo_jogador.txt");
         }
         else
         {
-            remove("arquivo_jogador_temp.txt");
-            printf("Jogador não encontrado!\n");
+            remove("./arquivos/arquivo_jogador_temp.txt");
+            printf("Jogador nï¿½o encontrado!\n");
         }
     }
     else
