@@ -182,7 +182,7 @@ void alterarTime()
     {
         // variável que confirma se o time existe
         int time_existente = 0;
-        // string conteúdo que será usada nas verificações
+        // string de conteúdo que será usada nas verificações
         char linha[TAMANHO_MAXIMO];
         // variável que marcará a posição do arquivo de texto(início ou fim)
         int posicao_arquivo = 0;
