@@ -5,15 +5,27 @@
 
 #define TAMANHO_MAXIMO 100
 
+// Estrutura data
 typedef struct
 {
     int dia, mes, ano;
 } Data;
+
+// Estrura para período
+typedef struct
+{
+    Data data_comeco;
+    Data data_encerramento;
+} Periodo;
+
+// Estruta para horas
 typedef struct
 {
     int hora, minuto;
 } Horario;
 
+/*Estruturas obrigatórias no trabalho*/
+// Estrutura de Times
 typedef struct
 {
     int id_time;
@@ -23,6 +35,7 @@ typedef struct
     int num_jogadores;
 } Times;
 
+// Estrutura de Jogadores
 typedef struct
 {
     int id_jogador;
@@ -34,6 +47,7 @@ typedef struct
     float salario;
 } Jogadores;
 
+// Estrutura de Partidas
 typedef struct
 {
     int id_partida;
@@ -46,12 +60,7 @@ typedef struct
     int destaque_individual_partida;
 } Partidas;
 
-typedef struct
-{
-    Data data_comeco;
-    Data data_encerramento;
-} Periodo;
-
+// Protótipos de funções
 void cadastrarTime();
 void alterarTime();
 void cadastrarJogador();
@@ -69,8 +78,10 @@ void salarioJogadores();
 
 int main()
 {
+    // Biblioca locale.h para uso de acentos e caracteres especiais
     setlocale(LC_ALL, "Portuguese");
 
+    // Menu e chamadas das funções necessárias no sistema
     int opcao;
 
     do
@@ -143,6 +154,7 @@ int main()
 
 void cadastrarTime()
 {
+    // limpa a tela
     system("cls");
     // inicia a biblioteca rand que cria números aleatórios
     srand(time(NULL));
@@ -402,7 +414,7 @@ void alterarJogador()
                 printf("Novo salário do jogador: ");
                 scanf("%d", &jogador.salario);
 
-                fseek(arquivo_jogador, posicao_arquivo, SEEK_SET);
+                fseek(arquivo_jogador, 0, SEEK_SET);
 
                 fprintf(arquivo_jogador_temp, "ID: %d\n", jogador.id_jogador);
                 fprintf(arquivo_jogador_temp, "Nome: %s", jogador.nome_jogador);
