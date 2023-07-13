@@ -3,14 +3,30 @@ Nome: Rian
 Apelido: Bolinha
 País de origem: Brasil
 Idade: 19
-Posição de jogo: A
+Posição: A
 Salario: 2250,50
 
-ID: 31342
-Nome: Icaro
-Apelido: Icrin
+ID: 6063
+Nome: Guilherme
+Apelido: Gui
 País de origem: Brasil
 Idade: 20
-Posição de jogo: B
-Salario: 2150,60
+Posição: C
+Salario: 2159,40
+
+ID: 19787
+Nome: Aldo
+Apelido: Aldin
+País de origem: Cuba
+Idade: 20
+Posição: F
+Salario: 2410,50
+
+ID: 20003
+Nome: Vitorio
+Apelido: Vi
+País de origem: Brasil
+Idade: 19
+Posição: C
+Salario: 2148,30
 

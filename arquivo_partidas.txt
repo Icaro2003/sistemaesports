@@ -1,16 +1,8 @@
-ID partida: 31985
+ID partida: 23111
 ID time da casa: 30604
 ID time visitante: 30783
-Data da partida: 10 / 12 / 2020
-Horário da partida: 10 : 20
-Placar final da partida: 5 X 3
-Destaque individual da partida: 31067
-
-ID partida: 32178
-ID time da casa: 31809
-ID time visitante: 30604
-Data da partida: 10 / 12 / 2021
+Data da partida: 10 / 2 / 2021
 Horário da partida: 10 : 25
-Placar final da partida: 4 X 3
-Destaque individual da partida: 31342
+Placar final da partida: 3 X 4
+Destaque individual da partida: 31067
 

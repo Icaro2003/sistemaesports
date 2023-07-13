@@ -220,6 +220,7 @@ void cadastrarTime()
     // fecha o arquivo criado
     fclose(arquivo_time);
 
+    // pausa ao encerrar função
     system("pause");
 }
 
@@ -390,7 +391,7 @@ void cadastrarJogador()
         fprintf(arquivo_jogador, "Apelido: %s", jogador.apelido);
         fprintf(arquivo_jogador, "País de origem: %s", jogador.pais_jogador);
         fprintf(arquivo_jogador, "Idade: %d\n", jogador.idade);
-        fprintf(arquivo_jogador, "Posição de jogo: %s", jogador.posicao);
+        fprintf(arquivo_jogador, "Posição: %s", jogador.posicao);
         fprintf(arquivo_jogador, "Salario: %.2f\n\n", jogador.salario);
     }
     else
@@ -472,7 +473,7 @@ void alterarJogador()
                 fgets(jogador.posicao, sizeof(jogador.posicao), stdin);
 
                 printf("Novo salário do jogador: ");
-                scanf("%d", &jogador.salario);
+                scanf("%f", &jogador.salario);
 
                 // função retorna para posição inicial do arquivo_jogador.txt
                 fseek(arquivo_jogador, 0, SEEK_SET);
@@ -482,8 +483,9 @@ void alterarJogador()
                 fprintf(arquivo_jogador_temp, "Nome: %s", jogador.nome_jogador);
                 fprintf(arquivo_jogador_temp, "Apelido: %s", jogador.apelido);
                 fprintf(arquivo_jogador_temp, "País de origem: %s", jogador.pais_jogador);
-                fprintf(arquivo_jogador_temp, "Posição: %s\n", jogador.posicao);
-                fprintf(arquivo_jogador, "Salario: %.2f\n\n", jogador.salario);
+                fprintf(arquivo_jogador_temp, "Idade: %d\n", jogador.idade);
+                fprintf(arquivo_jogador_temp, "Posição: %s", jogador.posicao);
+                fprintf(arquivo_jogador_temp, "Salario: %.2f\n\n", jogador.salario);
 
                 // limpa a tela
                 system("cls");
@@ -503,7 +505,7 @@ void alterarJogador()
         fclose(arquivo_jogador);
         fclose(arquivo_jogador_temp);
 
-        // verificação se o time foi cadastrado
+        // verificação se o jogador foi cadastrado
         if (jogador_existente)
         {
             // se o jogador foi cadastado remove o arquivo_jogador.txt já criado e renomeia o temporário para substitui o original
@@ -564,7 +566,7 @@ void registrarPartida()
         printf("ID do time visitante: ");
         scanf("%d", &partida.id_time_visitante);
 
-        // verificação com chamada da função verificarExistenciaTime(), para confirmar a existência do id do time da casa
+        // verificação com chamada da função verificarExistenciaTime(), para confirmar a existência do id do time visitante
         if (!verificarExistenciaTime(partida.id_time_visitante))
         {
             printf("ID do time visitante não encontrado!\n");
@@ -943,17 +945,27 @@ void listarTime()
         // string de conteúdo
         char linha_time[TAMANHO_MAXIMO];
 
+        // variável que confirma se o time existe(0 - não foi cadastrado, 1 - foi cadastrado)
+        int time_existente = 0;
+
         // laço de repetição com a variável linha_time, onde será feita a leitura conteúdo do arquivo_time, através da função fgets
         while (fgets(linha_time, sizeof(linha_time), arquivo_time) != NULL)
         {
             // impressão de todo o conteúdo presente em arquivo_time
             printf("%s", linha_time);
+            time_existente = 1;
+        }
+
+        // verificação se o time foi cadastrado
+        if (time_existente == 0)
+        {
+            printf("Não existem times cadastrados!\n");
         }
     }
     else
     {
         // mensagem de erro em caso do valor de arquivo_time receber NULL
-        printf("NÃO EXISTEM TIMES CADASTRADOS!");
+        printf("ERRO AO LISTAR TIMES CADASTRADOS!");
     }
 
     // fechamento de arquivo aberto
@@ -978,11 +990,21 @@ void listarJogadores()
         // string de conteúdo
         char linha_jogador[TAMANHO_MAXIMO];
 
+        // variável que confirma se o jogador existe(0 - não foi cadastrado, 1 - foi cadastrado)
+        int jogador_existente = 0;
+
         // laço de repetição com a variável linha_jogador, onde será feita a leitura conteúdo do arquivo_jogador, através da função fgets
         while (fgets(linha_jogador, sizeof(linha_jogador), arquivo_jogador) != NULL)
         {
             // impressão de todo o conteúdo presente em arquivo_jogador
             printf("%s", linha_jogador);
+            jogador_existente = 1;
+        }
+
+        // verificação se o jogador foi cadastrado
+        if (jogador_existente == 0)
+        {
+            printf("Não existem jogadores cadastrados!\n");
         }
     }
     else
@@ -1013,7 +1035,7 @@ void mediaIdadeJogadores()
         // string de conteúdo que será usada nas verificações
         char linha_jogador[TAMANHO_MAXIMO];
 
-        // definição das variáveis de contador, soma e media para cálculo da média de idade 
+        // definição das variáveis de contador, soma e media para cálculo da média de idade
         float cont = 0, soma = 0, media = 0;
 
         // laço de repetição com a variável linha_jogador, onde será feita a leitura conteúdo do arquivo_jogador, através da função fgets
@@ -1073,7 +1095,7 @@ void salarioJogadores()
         // string de conteúdo que será usada nas verificações
         char linha_jogador[TAMANHO_MAXIMO];
 
-        // definição da variável que será usada para soma dos salários 
+        // definição da variável que será usada para soma dos salários
         float soma = 0;
 
         // definição de uma variável que será usada como contador para verficação da existência de jogadores cadastrados

@@ -16,3 +16,27 @@ País de origem: EUA
 Data de criação: 10 / 10 / 2018
 Número de jogadores: 15
 
+ID: 18670
+Nome: IT
+País de origem: EUA
+Data de criação: 10 / 7 / 2017
+Número de jogadores: 10
+
+ID: 18909
+Nome: Bounders
+País de origem: EUA
+Data de criação: 10 / 9 / 2018
+Número de jogadores: 12
+
+ID: 19281
+Nome: Teste02
+País de origem: Brasil
+Data de criação: 10 / 2 / 2018
+Número de jogadores: 14
+
+ID: 22226
+Nome: Engenharia de Varzea
+País de origem: Brasil
+Data de criação: 13 / 7 / 2023
+Número de jogadores: 10
+
